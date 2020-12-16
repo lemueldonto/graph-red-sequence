@@ -30,6 +30,12 @@ public class Graph {
         return nbEdges;
     }
 
+    public IVertex getVertex(String tag) {
+        if ( ! tags.containsKey(tag) )
+            return null;
+        return tags.get(tag);
+    }
+
     public IVertex addVertex(String tag, Color color){
         if ( tags.containsKey(tag) )
             throw new DuplicateTagException(tag);
