@@ -2,11 +2,11 @@ package models;
 
 import models.tools.Color;
 
-public interface Edge {
+public interface IEdge {
 
-    public Vertex origin();
+    public IVertex origin();
 
-    public Vertex destination();
+    public IVertex destination();
 
     public Color getColor();
 

@@ -2,7 +2,7 @@ package models;
 
 import models.tools.Color;
 
-public interface Vertex {
+public interface IVertex {
 
     public String getTag();
 
