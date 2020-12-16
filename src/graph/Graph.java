@@ -78,9 +78,10 @@ public class Graph {
     }
 
     protected boolean remove(IVertex u, IVertex v) {
-        if ( adjacencyList.get(u).contains(v) )
-            return false;
-        adjacencyList.get(u).remove(v);
+        if ( adjacencyList.get(u).contains(v) ){
+            adjacencyList.get(u).remove(v);
+            return true;
+        }
         return false;
     }
 
@@ -114,10 +115,15 @@ public class Graph {
         for (IEdge edge: incidents(v)) {
             edge.destination().setColor(edge.getColor());
         }
-        if (adjacencyList.containsKey(v)) this.adjacencyList.remove(v);
-        for(Map.Entry<IVertex, Map<IVertex, IEdge>> entry : this.edges.entrySet()){
+        if (adjacencyList.containsKey(v)) adjacencyList.remove(v);
+        if (edges.containsKey(v)) {
+            nbEdges -= edges.get(v).size();
+            edges.remove(v);
+        }
+        for(Map.Entry<IVertex, Map<IVertex, IEdge>> entry : edges.entrySet()){
             if(entry.getValue().containsKey(v)){
-                this.edges.get(entry.getKey()).remove(v);
+                edges.get(entry.getKey()).remove(v);
+                nbEdges -= 1;
             }
         }
     }
