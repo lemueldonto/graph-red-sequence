@@ -17,7 +17,7 @@ public class GraphRunner {
         System.out.println(name);
         System.out.println(G);
 
-        /*System.out.println("\nVertices enumeration:");
+        System.out.println("\nVertices enumeration:");
         for ( IVertex vertex :  G.vertices() )
             System.out.print(vertex.getTag() + " ");
         System.out.println();
@@ -56,7 +56,7 @@ public class GraphRunner {
         System.out.println("\n(total) degree of vertices:");
         for ( IVertex vertex :  G.vertices() )
             System.out.println("degree(" + vertex + ") = " + G.degree(vertex));
-        System.out.println();*/
+        System.out.println();
 
     }
 

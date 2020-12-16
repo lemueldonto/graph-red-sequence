@@ -109,6 +109,19 @@ public class Graph {
         }
     }
 
+    public void removeVertex(IVertex v){
+        checkVertex(v);
+        for (IEdge edge: incidents(v)) {
+            edge.destination().setColor(edge.getColor());
+        }
+        if (adjacencyList.containsKey(v)) this.adjacencyList.remove(v);
+        for(Map.Entry<IVertex, Map<IVertex, IEdge>> entry : this.edges.entrySet()){
+            if(entry.getValue().containsKey(v)){
+                this.edges.get(entry.getKey()).remove(v);
+            }
+        }
+    }
+
     public int degree(IVertex u) {
         checkVertex(u);
         return outDegree(u) + inDegree(u);
