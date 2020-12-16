@@ -9,6 +9,14 @@ import models.tools.Color;
 import java.util.*;
 
 public class Graph {
+    public static final String ANSI_RED    = "\u001B[31m";
+    public static final String ANSI_BLUE   = "\u001B[34m";
+    public static final String ANSI_BRIGHT_RED    = "\u001B[91m";
+    public static final String ANSI_BRIGHT_BLUE   = "\u001B[94m";
+    public static final String ANSI_RESET  = "\u001B[0m";
+
+
+
     private Map<IVertex, List<IVertex>> adjacencyList;
     private Map<IVertex, Map<IVertex, IEdge>> edges;
     private Map<String, IVertex> tags;
@@ -16,6 +24,7 @@ public class Graph {
     private int nbEdges;
 
     public Graph(){
+        tags = new HashMap<String, IVertex>();
         adjacencyList = new HashMap<IVertex, List<IVertex>>();
         edges = new HashMap<IVertex, Map<IVertex, IEdge>>();
         inDegree = new HashMap<IVertex, Integer>();
@@ -24,6 +33,16 @@ public class Graph {
 
     public int nbVertices() {
         return adjacencyList.size();
+    }
+
+    public Iterable<IVertex> adjacents(IVertex u) {
+        checkVertex(u);
+        return adjacencyList.get(u);
+    }
+
+    public Iterable<IEdge> incidents(IVertex u) {
+        checkVertex(u);
+        return new IncidentEdgeIterator(u);
     }
 
     public int nbEdges() {
@@ -114,11 +133,26 @@ public class Graph {
         s += "number of verticies: " + nbVertices();
         s += "\nnumber of edges: " + nbEdges;
         s += "\nvertices:";
-        for ( IVertex u : vertices() )
-            s += " " + u;
+        for ( IVertex u : vertices() ){
+            //s += " " + u;
+            if(u.getColor().equals(Color.BLUE)) {
+                s += " " + ANSI_BLUE + u + ANSI_RESET;
+            }else {
+                s += " " + ANSI_RED + u + ANSI_RESET;
+            }
+        }
+
+
         s += "\nedges :";
-        for ( IEdge e : edges() )
-            s += " " + e;
+        for ( IEdge e : edges() ){
+            //s += " " + e;
+            if(e.getColor().equals(Color.BLUE)) {
+                s += " " + ANSI_BLUE + e + ANSI_RESET;
+            }else {
+                s += " " + ANSI_RED + e + ANSI_RESET;
+            }
+        }
+
         return "Graph : \n" + s;
     }
 
@@ -131,6 +165,25 @@ public class Graph {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // an inner class to build iterators over all edges
     private class EdgeIterator implements Iterable<IEdge>, Iterator<IEdge> {
 
         Iterator<Map.Entry<IVertex,Map<IVertex, IEdge>>> firstMapIterator;
@@ -156,6 +209,51 @@ public class Graph {
             if ( ! secondMapIterator.hasNext() )
                 secondMapIterator = firstMapIterator.next().getValue().entrySet().iterator();
             return secondMapIterator.next().getValue();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // an inner class to iterate over the incident edges
+    private class IncidentEdgeIterator implements Iterable<IEdge>, Iterator<IEdge> {
+
+        IVertex origin;
+        Iterator<IVertex> adjacents;
+
+        IncidentEdgeIterator(IVertex u) {
+            origin = u;
+            adjacents = adjacencyList.get(u).iterator();
+        }
+
+        public Iterator<IEdge> iterator() {
+            return this;
+        }
+
+        public boolean hasNext() {
+            return adjacents.hasNext();
+        }
+
+        public IEdge next() {
+            return findEdge(origin,adjacents.next());
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
         }
     }
 }

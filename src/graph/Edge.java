@@ -35,4 +35,14 @@ public class Edge implements IEdge {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    public String toString() {
+        return "(" + origin + ", " + destination + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Edge e = (Edge) o;
+        return origin == e.origin && destination == e.destination;
+    }
 }
