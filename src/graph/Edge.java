@@ -45,4 +45,9 @@ public class Edge implements IEdge {
         Edge e = (Edge) o;
         return origin == e.origin && destination == e.destination;
     }
+
+    @Override
+    public int compareTo(IEdge iEdge) {
+        return 0;
+    }
 }

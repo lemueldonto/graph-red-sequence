@@ -113,7 +113,7 @@ public class Graph {
     public void removeVertex(IVertex v){
         checkVertex(v);
         for (IEdge edge: incidents(v)) {
-            edge.destination().setColor(edge.getColor());
+            if(edge != null)edge.destination().setColor(edge.getColor());
         }
         if (adjacencyList.containsKey(v)) adjacencyList.remove(v);
         if (edges.containsKey(v)) {
@@ -184,17 +184,34 @@ public class Graph {
     }
 
 
+    public boolean haveRedVertice()
+    {
+        for (IVertex v:vertices())
+            if(v.getColor()==Color.RED)
+                return true;
+            return false;
+    }
+    public ArrayList<IVertex>  getAllRedVertice()
+    {
+        ArrayList<IVertex> allRedVertex= new ArrayList<>();
+        Iterator<IVertex> it =vertices().iterator();
+        while(it.hasNext()) {
+            IVertex v = it.next();
+           if(v.getColor()==Color.RED)
+               allRedVertex.add(v);
+        }
+    return allRedVertex;
+    }
 
-
-
-
-
-
-
-
-
-
-
+    public ArrayList<IEdge> getEdgeFromTwoVertices(IVertex vertex1, IVertex vertex2)
+    {
+        ArrayList<IEdge> edgeList= new ArrayList<>();
+        for (IEdge edge:edges())
+            if((edge.destination().equals(vertex1) && edge.origin().equals(vertex2))
+            ||(edge.origin().equals(vertex1) && edge.destination().equals(vertex2) ))
+                edgeList.add(edge);
+            return  edgeList;
+    }
 
 
 

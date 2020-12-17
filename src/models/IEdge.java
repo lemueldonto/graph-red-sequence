@@ -2,7 +2,7 @@ package models;
 
 import models.tools.Color;
 
-public interface IEdge {
+public interface IEdge extends Comparable<IEdge>{
 
     public IVertex origin();
 
