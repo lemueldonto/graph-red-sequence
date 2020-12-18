@@ -164,6 +164,7 @@ public class Graph {
 
         s += "\nedges :";
         for ( IEdge e : edges() ){
+            if (e != null)
             //s += " " + e;
             if(e.getColor().equals(Color.BLUE)) {
                 s += " " + ANSI_BLUE + e + ANSI_RESET;
@@ -244,7 +245,8 @@ public class Graph {
         public IEdge next() {
             if ( ! secondMapIterator.hasNext() )
                 secondMapIterator = firstMapIterator.next().getValue().entrySet().iterator();
-            return secondMapIterator.next().getValue();
+            if(secondMapIterator.hasNext()) return secondMapIterator.next().getValue();
+            return null;
         }
     }
 

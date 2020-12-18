@@ -30,35 +30,41 @@ public class FirstRedSequenceAlgo {
         int i = 0;
         while(graph.haveRedVertice())
         {
+            System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
             i++;
+            System.out.println("ITERATION  N° "+i);
             ArrayList<IVertex> sortedRedVertices=getSortedList(graph.getAllRedVertice(),0);
              // Il existe au moins un sommet qui a des sommets adjacents rouges
                sortedRedVertices=getSortedList(sortedRedVertices,1);
                 int max = sortedRedVertices.get(0).numberOfRedToBlue(); // trier par le sommet qui change le plus de sommet rouge en bleu
                if(max>0) {
+                   System.out.println("SUPPRESSION DU SOMMET : "+sortedRedVertices.get(0));
                    graph.removeVertex(sortedRedVertices.get(0));
                }
                else {
                    sortedRedVertices=getSortedList(sortedRedVertices,2);
                    if(sortedRedVertices.get(0).getNumberOfBlueEdge()>0)
+                   {
+                       System.out.println("SUPPRESSION DU SOMMET : "+sortedRedVertices.get(0));
                        graph.removeVertex(sortedRedVertices.get(0)); // on supprime celui qui a le plus d'arrete bleu
+                   }
                    else
                    {
+                       System.out.println("SUPPRESSION DU SOMMET : "+sortedRedVertices.get(sortedRedVertices.size()-1));
                        sortedRedVertices=getSortedList(sortedRedVertices,0);
                        graph.removeVertex(sortedRedVertices.get(sortedRedVertices.size()-1));
                    }
                }
-            System.out.println(" ITERATION  N° "+i);
             System.out.println(graph);
         }
     }
     public static void main(String[] args) {
         System.out.println("-------------------------------\n");
-        System.out.println(GraphBuilder.G);
-        Graph g = GraphBuilder.G;
+        System.out.println(GraphBuilder.G2);
+        Graph g = GraphBuilder.G2;
         //System.out.println(g.getAllRedVertice());
         //System.out.println(getSortedList(g.getAllRedVertice(),1));
-        run(GraphBuilder.G);
+        run(GraphBuilder.G2);
 
     }
 }
