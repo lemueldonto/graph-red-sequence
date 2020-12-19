@@ -62,6 +62,6 @@ public class GraphRunner {
 
     public static void main(String[] args) {
         System.out.println("-------------------------------\n");
-        testGraphMethods("G:", GraphBuilder.G);
+        testGraphMethods("G1:", GraphBuilder.G1);
     }
 }

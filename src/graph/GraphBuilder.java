@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class GraphBuilder {
     public static Graph D1 = graph("A 1 E 1 0 B 0 D 1 1 B 0 F 0 0 C 1 E 1 1 D 1 F 0 1 F 0 C 1 1 F 0 E 1 1 G 0 A 1 0 G 0 B 0 1 G 0 C 1 0");
-    public static Graph G = graph("A 0 B 1 0 A 0 C 1 0 C 1 A 0 1 B 1 D 0 1 C 1 D 0 0 C 1 E 1 0 E 1 D 0 1 E 1 F 0 0 F 0 E 1 0 G 0 E 1 1 G 0 F 0 0 G 0 H 1 1 H 1 F 0 1 H 1 D 0 0");
+    public static Graph G1 = graph("A 0 B 1 0 A 0 C 1 0 C 1 A 0 1 B 1 D 0 1 C 1 D 0 0 C 1 E 1 0 E 1 D 0 1 E 1 F 0 0 F 0 E 1 0 G 0 E 1 1 G 0 F 0 0 G 0 H 1 1 H 1 F 0 1 H 1 D 0 0");
     public static Graph G2 = graph("A 0 C 0 1 A 0 B 1 0 B 1 C 0 0 B 1 D 1 1 C 0 D 1 0 D 1 E 1 0 C 0 E 1 0");
 
     public static Graph graph(String input) {
