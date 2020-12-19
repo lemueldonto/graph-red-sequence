@@ -27,7 +27,7 @@ public class GraphGenerator {
 
         for(int i=0; i<size; i++){
             Random rand = new Random();
-            Color vertexColor =  rand.nextInt(100) > perVertexRed ? Color.BLUE : Color.RED;
+            Color vertexColor =  rand.nextInt(100) >= perVertexRed ? Color.BLUE : Color.RED;
 
             graph.addVertex(Integer.toString(i), vertexColor);
         }
@@ -38,7 +38,7 @@ public class GraphGenerator {
 
             for(IVertex vertex : vertices){
                 Random rand = new Random();
-                Color EdgeColor =  rand.nextInt(100) > perEdgeBlue ? Color.RED : Color.BLUE;
+                Color EdgeColor =  rand.nextInt(100) >= perEdgeBlue ? Color.RED : Color.BLUE;
 
                 graph.addEdge(tmpVertex, vertex, EdgeColor);
             }
