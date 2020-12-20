@@ -64,4 +64,37 @@ public class Vertex implements IVertex {
         return nb;
     }
 
+   @Override
+    public int numberOfRedToBlue()  // le nombre de fleche bleu qui va vers un sommet rouge
+    {
+        int nb=0;
+        Iterable<IVertex> adjacents=fromGraph.adjacents(this);
+        for(IVertex vertex: adjacents)
+        {
+            IEdge edge=fromGraph.findEdge(this,vertex);
+            if(edge!=null && edge.getColor()==Color.BLUE && vertex.getColor()==Color.RED)
+                nb++;
+        }
+        return nb++;
+    }
+    @Override
+    public int numberOfBlueToRed()  // le nombre de fleche rougequi va vers un sommet bleu
+    {
+        int nb=0;
+        Iterable<IVertex> adjacents=fromGraph.adjacents(this);
+        for(IVertex vertex: adjacents)
+        {
+            IEdge edge=fromGraph.findEdge(this,vertex);
+            if(edge!=null && edge.getColor()==Color.RED && vertex.getColor()==Color.BLUE)
+                nb++;
+        }
+        return nb++;
+    }
+
+    @Override
+    public int finalNumberOfBlueToChange()
+    {
+        return  numberOfBlueToRed()- numberOfRedToBlue();
+    }
+
 }

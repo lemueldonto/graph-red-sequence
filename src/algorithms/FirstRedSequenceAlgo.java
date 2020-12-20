@@ -3,19 +3,15 @@ package algorithms;
 import graph.Graph;
 import graph.GraphBuilder;
 import models.IVertex;
-import models.tools.Color;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 public class FirstRedSequenceAlgo {
 
-
     public FirstRedSequenceAlgo() { }
 
-    public static ArrayList<IVertex> getSortedList (ArrayList<IVertex> list) {
+    public static ArrayList<IVertex> sort(ArrayList<IVertex> list) {
         ArrayList<IVertex> tmp = new ArrayList<>(list);
         Comparator<IVertex> comparator;
         comparator = Comparator.comparing(IVertex::getNumberBlueAdjacent);
@@ -24,7 +20,7 @@ public class FirstRedSequenceAlgo {
     }
 
     public static IVertex getFavoriteVertex(ArrayList<IVertex> list){
-        list = getSortedList(list);
+        list = sort(list);
         IVertex favoriteVertex = list.get(0);
         for (IVertex vertex : list) {
             if (favoriteVertex.getNumberRedAdjacent() > vertex.getNumberRedAdjacent()){
