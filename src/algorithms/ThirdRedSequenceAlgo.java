@@ -8,10 +8,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 
-public class SecondRedSequenceAlgo {
-
-
-
+public class ThirdRedSequenceAlgo {
     public static ArrayList<IVertex> sort(ArrayList<IVertex> list){
         ArrayList<IVertex> tmp = new ArrayList<>(list);
         Comparator<IVertex> comparator;
@@ -49,28 +46,25 @@ public class SecondRedSequenceAlgo {
 
     public static void run (Graph graph){
         int i = 0;
-        while(graph.haveRedVertice()) {
-
-             IVertex vertex = null;
-            while(hasNullVertex(graph.getAllRedVertices()) != null){
-                i++;
-                System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
-                vertex = hasNullVertex(graph.getAllRedVertices());
-                System.out.println("ITERATION  N° " + i);
-                System.out.println("SUPPRESSION DU SOMMET : " + vertex);
-                graph.removeVertex(vertex);
-                System.out.println(graph);
-            }
+        while(hasNullVertex(graph.getAllRedVertices()) != null){
+            IVertex vertex = null;
             i++;
-            if(graph.haveRedVertice()){
+            System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
+            vertex = hasNullVertex(graph.getAllRedVertices());
+            System.out.println("ITERATION  N° " + i);
+            System.out.println("SUPPRESSION DU SOMMET : " + vertex);
+            graph.removeVertex(vertex);
+            System.out.println(graph);
+        }
+        while(graph.haveRedVertice()) {
+            IVertex vertex = null;
                 System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
                 vertex = getFavoriteVertex(graph.getAllRedVertices());
                 System.out.println("ITERATION  N° " + i);
                 System.out.println("SUPPRESSION DU SOMMET : " + vertex);
                 graph.removeVertex(vertex);
                 System.out.println(graph);
-            }
-
+            i++;
         }
     }
 
