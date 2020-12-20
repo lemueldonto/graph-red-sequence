@@ -35,7 +35,6 @@ public class FirstRedSequenceAlgo {
         int i = 0;
         while(graph.haveRedVertice()) {
            // System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
-            System.out.println(" Running...");
             i++;
             IVertex vertex = getFavoriteVertex(graph.getAllRedVertices());
             //System.out.println("ITERATION  N° " + i);
@@ -64,6 +63,7 @@ public class FirstRedSequenceAlgo {
 
     public static void main(String[] args) {
         System.out.println("-------------------------------\n");
+        System.out.println("Running");
         //System.out.println(GraphBuilder.G1);
         //Graph g = GraphBuilder.G1;
         //int it = run(GraphBuilder.G1);
