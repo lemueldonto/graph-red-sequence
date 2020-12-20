@@ -1,5 +1,6 @@
 package algorithms;
 
+import generator.GraphGenerator;
 import graph.Graph;
 import graph.GraphBuilder;
 import models.IVertex;
@@ -47,38 +48,55 @@ public class SecondRedSequenceAlgo {
         return list.get(0);
     }
 
-    public static void run (Graph graph){
+    public static int run (Graph graph){
         int i = 0;
         while(graph.haveRedVertice()) {
 
              IVertex vertex = null;
             while(hasNullVertex(graph.getAllRedVertices()) != null){
                 i++;
-                System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
+                //System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
                 vertex = hasNullVertex(graph.getAllRedVertices());
-                System.out.println("ITERATION  N° " + i);
-                System.out.println("SUPPRESSION DU SOMMET : " + vertex);
+                //System.out.println("ITERATION  N° " + i);
+                //System.out.println("SUPPRESSION DU SOMMET : " + vertex);
                 graph.removeVertex(vertex);
-                System.out.println(graph);
+                //System.out.println(graph);
             }
             i++;
             if(graph.haveRedVertice()){
-                System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
+                //System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@00 \n");
                 vertex = getFavoriteVertex(graph.getAllRedVertices());
-                System.out.println("ITERATION  N° " + i);
-                System.out.println("SUPPRESSION DU SOMMET : " + vertex);
+                //System.out.println("ITERATION  N° " + i);
+                //System.out.println("SUPPRESSION DU SOMMET : " + vertex);
                 graph.removeVertex(vertex);
-                System.out.println(graph);
+                //System.out.println(graph);
             }
 
         }
+        return i;
+    }
+
+    public static void average(){
+        ArrayList list = new ArrayList();
+        for (int k = 0; k<=10; k++){
+            for(int j = 0 ; j<=10; j++){
+                int it=0;
+                for(int i = 0; i<100; i++){
+                    it +=run(GraphGenerator.makeCompleteOrientedSymetricGraph(100,10*k,10*j));
+                }
+                list.add((double)it/100);
+            }
+            System.out.println(list);
+            list.clear();
+        }
+
     }
 
     public static void main(String[] args) {
-        System.out.println("-------------------------------\n");
-        System.out.println(GraphBuilder.G1);
-        Graph g = GraphBuilder.G1;
-        run(GraphBuilder.G1);
-
+        //System.out.println("-------------------------------\n");
+        //System.out.println(GraphBuilder.G1);
+        //Graph g = GraphBuilder.G1;
+        //run(GraphGenerator.makeCompleteOrientedSymetricGraph(100,0,0));
+        average();
     }
 }
