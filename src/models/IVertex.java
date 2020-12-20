@@ -9,9 +9,6 @@ public interface IVertex extends Comparable<IVertex>{
     public Color getColor();
 
     public void setColor(Color color);
-    public int getNumberRedAdjacents();
-    public int getNumberOfBlueEdge();
-    public int numberOfRedToBlue();
-    public int numberOfBlueToRed();
-    public int finalNumberOfBlueToChange();
+    public int getNumberRedAdjacent();
+    public int getNumberBlueAdjacent();
 }

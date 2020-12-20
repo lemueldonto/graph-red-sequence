@@ -192,7 +192,7 @@ public class Graph {
                 return true;
             return false;
     }
-    public ArrayList<IVertex>  getAllRedVertice()
+    public ArrayList<IVertex>  getAllRedVertices()
     {
         ArrayList<IVertex> allRedVertex= new ArrayList<>();
         Iterator<IVertex> it =vertices().iterator();
