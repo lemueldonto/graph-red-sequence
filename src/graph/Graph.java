@@ -176,6 +176,10 @@ public class Graph {
         return "Graph : \n" + s;
     }
 
+    public Set<IVertex> getVertices() {
+        return adjacencyList.keySet();
+    }
+
     public Iterable<IVertex> vertices() {
         return adjacencyList.keySet();
     }

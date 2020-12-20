@@ -1,3 +1,4 @@
+import generator.GraphGenerator;
 import graph.Edge;
 import graph.Graph;
 import graph.GraphBuilder;
@@ -62,6 +63,8 @@ public class GraphRunner {
 
     public static void main(String[] args) {
         System.out.println("-------------------------------\n");
-        testGraphMethods("G1:", GraphBuilder.G1);
+        //testGraphMethods("G:", GraphBuilder.G);
+        Graph graph = GraphGenerator.makeCompleteOrientedSymetricGraph(100, 50, 50);
+        testGraphMethods("Generated :", graph);
     }
 }
