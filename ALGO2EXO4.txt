@@ -1,7 +1,6 @@
 Tant qu’il y a des sommets rouges
 	Récupérer les sommets rouges
 	Récupérer le nombre d’arcs rouges sortant vers des sommets bleus(RB) et le nombre d’arcs bleus vers des sommets rouges(BR).
-	Pour chaque sommet calculer S= BR-RB
 	Supprimer le sommet avec BR=0 et RB=0 s’il existe et changer la couleur des voisins selon la couleur des arcs.
 	Sinon 
 	Pour chaque sommet calculer S= BR-RB
